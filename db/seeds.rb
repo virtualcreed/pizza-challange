@@ -48,4 +48,20 @@ discount_codes_seed = [
         description:"Save 5 euro. Applicable on order of 10 euro or above."
     }
 ]
-discount_codes = DiscountCode.create(discount_codes_seed)
+# discount_codes = DiscountCode.create(discount_codes_seed)
+
+# order_1 = Order.new
+
+# PizzaOrder.new
+# PizzaOrder.sizes
+# reload!
+# order = Order.new
+# order
+# pizza = Pizza.first
+# pizza
+# pizza_order = PizzaOrder.create(order:order,pizza:pizza)
+# pizza_order
+# PizzaOrder.create(order:order,pizza:Pizza.second)
+# PizzaOrderIngAdd.create(pizza_order:PizzaOrder.first,ingredient:Ingredient.first)
+# PizzaOrderIngAdd.create(pizza_order:PizzaOrder.first,ingredient:Ingredient.second)
+# PizzaOrderIngRemove.create(pizza_order:PizzaOrder.first,ingredient:Ingredient.third)
