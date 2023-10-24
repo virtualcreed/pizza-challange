@@ -1,0 +1,16 @@
+<h1>Orders</h1>
+<% @orders.each do |order| %>
+    <hr>
+    <div>
+        <span>ID:</span>
+        <span><%= order.id %></span>
+    </div>
+    <div>
+        <span>Created:</span>
+        <span><%= order.created_at %></span>
+    </div>
+    <div>
+        <span>Promotion Codes:</span>
+        <% order.promotion %>
+    </div>
+<% end %>
