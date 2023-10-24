@@ -5,5 +5,6 @@ class OrdersController < ApplicationController
     def update
         order = Order.find params[:id]
         order.update(completed:true)
+        redirect_to orders_url
     end
 end
