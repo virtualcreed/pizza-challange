@@ -1,0 +1,11 @@
+.section {
+    display:grid;
+    grid-template-columns:50% 50%;
+}
+.left-section {
+}
+.right-section {
+}
+.total-price{
+    margin:20px 0;
+}

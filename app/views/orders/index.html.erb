@@ -1,54 +1,57 @@
 <h1>Orders</h1>
 <% @orders.each do |order| %>
     <hr>
-    <%# LEFT SECTION %>
-    <div class="left-section">
-        <div>
-            <span>ID:</span>
-            <span><%= order.id %></span>
-        </div>
-        <div>
-            <span>Created:</span>
-            <span><%= order.created_at %></span>
-        </div>
-        <div>
-            <span>Promotion Codes:</span>
-            <% order.order_promos.each do |order_promo| %>
-                <span><%= order_promo.promo_code.name %></span>
-            <% end %>
-        </div>
-        <div>
-            <span>Discount Codes:</span>
-            <% order.order_discounts.each do |order_discount| %>
-                <span><%= order_discount.discount_code.name %></span>
-            <% end %>
-        </div>
-        <div class="total-price">
-            <span>Total Price:</span>
-            <%= order.total_price%>
-            <span>&euro;</span>
-        <div>
-        <%= button_to "Complete", order_path(order),method: :patch%>
-    </div>
+    <% if !order.completed %>
+        <div class="section">
+            <%# LEFT SECTION %>
+            <div class="left-section">
+                <div>
+                    <span>ID:</span>
+                    <span><%= order.id %></span>
+                </div>
+                <div>
+                    <span>Created:</span>
+                    <span><%= order.created_at %></span>
+                </div>
+                <div>
+                    <span>Promotion Codes:</span>
+                    <% order.order_promos.each do |order_promo| %>
+                        <span><%= order_promo.promo_code.name %></span>
+                    <% end %>
+                </div>
+                <div>
+                    <span>Discount Codes:</span>
+                    <% order.order_discounts.each do |order_discount| %>
+                        <span><%= order_discount.discount_code.name %></span>
+                    <% end %>
+                </div>
+                <div class="total-price">
+                    <span>Total Price:</span>
+                    <%= order.total_price%>
+                    <span>&euro;</span>
+                </div>
+                <%= button_to "Complete", order_path(order),method: :patch%>
+            </div>
 
-    <%# RIGHT SECTION %>
-    <div class="right-section">
-        <span>Items:<span>
-        <% order.pizza_orders.each do |pizza_order| %>
-            <ul>
-                <li><%= pizza_order.pizza.name %> (<%= pizza_order.size %>)</li>
-                <% if pizza_order.pizza_order_ing_adds.any? %>
+            <%# RIGHT SECTION %>
+            <div class="right-section">
+                <span>Items:<span>
+                <% order.pizza_orders.each do |pizza_order| %>
                     <ul>
-                        <li>Add: <%= pizza_order_ings_formatted pizza_order.pizza_order_ing_adds%> </li>
+                        <li><%= pizza_order.pizza.name %> (<%= pizza_order.size %>)</li>
+                        <% if pizza_order.pizza_order_ing_adds.any? %>
+                            <ul>
+                                <li>Add: <%= pizza_order_ings_formatted pizza_order.pizza_order_ing_adds%> </li>
+                            </ul>
+                        <% end %>
+                        <% if pizza_order.pizza_order_ing_removes.any? %>
+                            <ul>
+                                <li>Remove: <%= pizza_order_ings_formatted pizza_order.pizza_order_ing_removes%> </li>
+                            </ul>
+                        <% end %>
                     </ul>
                 <% end %>
-                <% if pizza_order.pizza_order_ing_removes.any? %>
-                    <ul>
-                        <li>Remove: <%= pizza_order_ings_formatted pizza_order.pizza_order_ing_removes%> </li>
-                    </ul>
-                <% end %>
-            </ul>
-        <% end %>
-    </div>
-
+            </div>
+        </div>
+    <% end %>
 <% end %>
