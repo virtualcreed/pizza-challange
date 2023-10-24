@@ -28,6 +28,7 @@
             <%= order.total_price%>
             <span>&euro;</span>
         <div>
+        <%= button_to "Complete", order_path(order),method: :patch%>
     </div>
 
     <%# RIGHT SECTION %>
