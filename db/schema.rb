@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_143643) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_152158) do
   create_table "discount_codes", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "description", default: "", null: false
@@ -23,6 +23,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_143643) do
     t.decimal "price", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "order_discounts", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "discount_code_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discount_code_id"], name: "index_order_discounts_on_discount_code_id"
+    t.index ["order_id"], name: "index_order_discounts_on_order_id"
+  end
+
+  create_table "order_promos", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "promo_code_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_promos_on_order_id"
+    t.index ["promo_code_id"], name: "index_order_promos_on_promo_code_id"
   end
 
   create_table "orders", force: :cascade do |t|
