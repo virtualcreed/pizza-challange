@@ -1,0 +1,2 @@
+class PizzaOrderIngRemove < ApplicationRecord
+end
