@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
 pizzas_seed = [
     {
         name:"Tonno",
@@ -19,7 +13,7 @@ pizzas_seed = [
         price:4.20
     }
 ]
-# pizzas = Pizza.create(pizzas_seed)
+pizzas = Pizza.create(pizzas_seed)
 ingredients_seed = [
     {
         name:"Onions",
@@ -34,34 +28,26 @@ ingredients_seed = [
         price:0.5
     }
 ]
-# ingredients = Ingredient.create(ingredients_seed)
+ingredients = Ingredient.create(ingredients_seed)
 promo_codes_seed = [
     {
         name:"2FOR1",
         description:"Buy 2 for the price of 1"
     }
 ]
-# promo_codes = PromoCode.create(promo_codes_seed)
+promo_codes = PromoCode.create(promo_codes_seed)
 discount_codes_seed = [
     {
         name:"SAVE5",
         description:"Save 5 euro. Applicable on order of 10 euro or above."
     }
 ]
-# discount_codes = DiscountCode.create(discount_codes_seed)
+discount_codes = DiscountCode.create(discount_codes_seed)
 
-# order_1 = Order.new
-
-# PizzaOrder.new
-# PizzaOrder.sizes
-# reload!
-# order = Order.new
-# order
-# pizza = Pizza.first
-# pizza
-# pizza_order = PizzaOrder.create(order:order,pizza:pizza)
-# pizza_order
-# PizzaOrder.create(order:order,pizza:Pizza.second)
-# PizzaOrderIngAdd.create(pizza_order:PizzaOrder.first,ingredient:Ingredient.first)
-# PizzaOrderIngAdd.create(pizza_order:PizzaOrder.first,ingredient:Ingredient.second)
-# PizzaOrderIngRemove.create(pizza_order:PizzaOrder.first,ingredient:Ingredient.third)
+order = Order.create
+pizza = Pizza.first
+pizza_order = PizzaOrder.create(order:order,pizza:pizza)
+PizzaOrder.create(order:order,pizza:Pizza.second)
+PizzaOrderIngAdd.create(pizza_order:pizza_order,ingredient:Ingredient.first)
+PizzaOrderIngAdd.create(pizza_order:pizza_order,ingredient:Ingredient.second)
+PizzaOrderIngRemove.create(pizza_order:pizza_order,ingredient:Ingredient.third)
